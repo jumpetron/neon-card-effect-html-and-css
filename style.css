@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Valorant';
+}
+
+@property --rotate{
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}
+
+@font-face {
+    font-family: 'Valorant';
+    src: url('./fonts/Valorant\ Font.ttf');
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    background: #212534;
+}
+
+.card__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.card{
+    background: #191c29;
+    border-radius: 8px;
+    padding: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.card__image img{
+    width: 100%;
+    height: 100%;
+}
+
+.card__content{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #191c29;
+    color: #fff;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.card__content p{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card__content small{
+    font-size: 10px;
+}
+
+.valorant__text{
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    rotate: 90deg;
+    font-size: 22px;
+    color: #f74452;
+}
+
+.card:hover .card__content{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(126, 117, 117, 0.35);
+}
+
+.card__box{
+    position: relative;
+}
+
+.card__box::before{
+    position: absolute;
+    content: '';
+    width: 104%;
+    height: 102%;
+    background-image: linear-gradient(var(--rotate), #f74452, #3c67e3, #191c29);
+    top: -1%;
+    left: -2%;
+    border-radius: 8px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0%{
+        --rotate: 0deg;
+    }
+    100%{
+        --rotate: 360deg;
+    }
+}
